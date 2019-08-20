@@ -1,0 +1,3 @@
+[submodule "tf_object_detection"]
+	path = tf_object_detection
+	url = git@github.com:tensorflow/models
