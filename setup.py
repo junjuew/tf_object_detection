@@ -22,6 +22,7 @@ with open(os.path.join(file_dir, 'README.md')) as f:
     long_description = f.read()
 
 install_requires = [
+    'setuptools>=41.0.0',  # tensorboard requirements
     'tensorflow-gpu<2.0',
     'cython',
     'contextlib2',
@@ -50,9 +51,8 @@ setuptools.setup(
         'object_detection': 'tf_object_detection/research/object_detection'},
     license='Apache License 2.0',
     install_requires=install_requires,
-    python_requires='>3.4, <4',
+    python_requires='>3.5, <4',  # matplotlib >3.1 requires python >=3.6
     classifiers=[
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
