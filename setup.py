@@ -28,20 +28,14 @@ install_requires = [
     'pillow',
     'lxml',
     # replacement for pycocotools, as the published pypi package fails on cython and numpy dependencies
-    'git+https://github.com/junjuew/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI',
+    'pycocotools-fix',
     'jupyter',
     'matplotlib'
 ]
 
-setup_requires = [
-    'setuptools>=18.0',
-    'cython',
-    'numpy'
-]
-
 setuptools.setup(
     name='tf_object_detection',
-    version='0.0.2.5',
+    version='0.0.2.6',
     author='Junjue Wang',
     author_email='junjuew@cs.cmu.edu',
     description='A Thin Wrapper around Tensorflow Object Detection API for Easy Installation and Use',
@@ -56,7 +50,6 @@ setuptools.setup(
         'object_detection': 'tf_object_detection/research/object_detection'},
     license='Apache License 2.0',
     install_requires=install_requires,
-    setup_requires=setup_requires,
     python_requires='>3.4, <4',
     classifiers=[
         'Programming Language :: Python :: 3.5',
