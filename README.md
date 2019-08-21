@@ -1,4 +1,10 @@
-# tf_object_detection
+# tf_object_detection [![PyPI version][pypi-image]][pypi] [![Build Status][travis-image]][travis]
+
+[travis-image]: https://travis-ci.org/junjuew/tf_object_detection.svg?branch=master
+[travis]: http://travis-ci.org/junjuew/tf_object_detection
+
+[pypi-image]: https://badge.fury.io/py/tf-object-detection.svg
+[pypi]: https://pypi.org/project/tf-object-detection/
 
 This is a thin wrapper around [Tensorflow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection) for easy installation and use. The original [installation procedure](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md) contains multiple manual steps that make dependency management difficult. This repository creates a pip package that automate the installation so that you can install the API with a single pip install.
 
