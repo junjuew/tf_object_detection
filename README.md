@@ -11,7 +11,7 @@ pip install tf-object-detection
 ## Usage
 
 All the scripts from tensorflow object detection APIs work out-of-box. 
-You can find example scripts using the API [here](tf_object_detection/research/object_detection/model_main.py).
+You can find an example usages from the API's [model_main.py](https://github.com/tensorflow/models/blob/master/research/object_detection/model_main.py).
 
 ```
 import object_detection
@@ -20,12 +20,12 @@ import object_detection
 
 ## What's in here
 
-* [setup.py](setup.py) Python packaging script.
-* [pb2](pb2) contains the compiled protobuf files from the following commands.
+* [setup.py](setup.py): The python packaging script.
+* [pb2](pb2): This directory contains the compiled protobuf files from the following commands.
 
 ```bash
 cd tf_object_detection/research/
 protoc object_detection/protos/*.proto --python_out=.
 mv object_detection/protos/*_pb2.py ../../pb2/
 ```
-* [tf_object_detection](tf_object_detection) A git submodule pointing to the version of tensorflow object detection this thin wrapper is for.
+* tf_object_detection: A git submodule pointing to the version of tensorflow object detection this thin wrapper is for.

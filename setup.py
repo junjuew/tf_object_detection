@@ -12,7 +12,6 @@ def _copy_pb2_files():
     dest_dir = os.path.join(
         file_dir, 'tf_object_detection/research/object_detection/protos/')
     for filename in glob.glob(os.path.join(file_dir, 'pb2', '*.*')):
-        print(filename)
         shutil.copy(filename, dest_dir)
 
 
@@ -22,9 +21,27 @@ _copy_pb2_files()
 with open(os.path.join(file_dir, 'README.md')) as f:
     long_description = f.read()
 
+install_requires = [
+    'tensorflow-gpu<2.0',
+    'numpy',  # explicitly declared as pycocotools does not declare it explicitly
+    'cython',
+    'contextlib2',
+    'pillow',
+    'lxml',
+    'pycocotools',
+    'jupyter',
+    'matplotlib'
+]
+
+setup_requires = [
+    'setuptools>=18.0',
+    'cython',
+    'numpy'
+]
+
 setuptools.setup(
-    name='object_detection',
-    version='0.0.1',
+    name='tf_object_detection',
+    version='0.0.2.4',
     author='Junjue Wang',
     author_email='junjuew@cs.cmu.edu',
     description='A Thin Wrapper around Tensorflow Object Detection API for Easy Installation and Use',
@@ -38,19 +55,10 @@ setuptools.setup(
         '': 'tf_object_detection/research/slim',  # tf slim dependencies
         'object_detection': 'tf_object_detection/research/object_detection'},
     license='Apache License 2.0',
-    install_requires=[
-        'tensorflow-gpu<2.0',
-        'Cython',
-        'contextlib2',
-        'pillow',
-        'lxml',
-        'pycocotools',
-        'jupyter',
-        'matplotlib'
-    ],
-    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
+    install_requires=install_requires,
+    setup_requires=setup_requires,
+    python_requires='>3.4, <4',
     classifiers=[
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
