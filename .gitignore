@@ -1,0 +1,4 @@
+build
+dist
+conda-env
+.vscode

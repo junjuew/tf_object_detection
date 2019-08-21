@@ -1,15 +1,21 @@
-import os
 import glob
+import os
 import shutil
 
 import setuptools
 
 file_dir = os.path.dirname(os.path.realpath(__file__))
+
+
 def _copy_pb2_files():
-    dest_dir = os.path.join(file_dir, 'tf_object_detection/research/object_detection/protos/')
+    """Copy compiled protobuf files into the python package for distribution."""
+    dest_dir = os.path.join(
+        file_dir, 'tf_object_detection/research/object_detection/protos/')
     for filename in glob.glob(os.path.join(file_dir, 'pb2', '*.*')):
         print(filename)
         shutil.copy(filename, dest_dir)
+
+
 _copy_pb2_files()
 
 
@@ -29,7 +35,7 @@ setuptools.setup(
         where='tf_object_detection/research', include=['object_detection', 'object_detection.*']) + setuptools.find_packages(
         where='tf_object_detection/research/slim'),
     package_dir={
-        '': 'tf_object_detection/research/slim', # tf slim dependencies
+        '': 'tf_object_detection/research/slim',  # tf slim dependencies
         'object_detection': 'tf_object_detection/research/object_detection'},
     license='Apache License 2.0',
     install_requires=[
