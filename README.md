@@ -1,6 +1,6 @@
 # tf_object_detection
 
-A Thin Wrapper around Tensorflow Object Detection API for Easy Installation and Use
+This is a thin wrapper around [Tensorflow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection) for easy installation and use. The original [installation procedure](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md) contains multiple manual steps that make dependency management difficult. This repository creates a pip package that automate the installation so that you can install the API with a single pip install.
 
 ## Installation
 
@@ -18,12 +18,14 @@ import object_detection
 ```
 
 
-## Generating 
+## What's in here
 
-[pb2](pb2) contains the compiled protobuf files from the following commands.
+* [setup.py](setup.py) Python packaging script.
+* [pb2](pb2) contains the compiled protobuf files from the following commands.
 
 ```bash
 cd tf_object_detection/research/
 protoc object_detection/protos/*.proto --python_out=.
 mv object_detection/protos/*_pb2.py ../../pb2/
 ```
+* [tf_object_detection](tf_object_detection) A git submodule pointing to the version of tensorflow object detection this thin wrapper is for.
