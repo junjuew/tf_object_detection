@@ -23,12 +23,12 @@ with open(os.path.join(file_dir, 'README.md')) as f:
 
 install_requires = [
     'tensorflow-gpu<2.0',
-    'numpy',  # explicitly declared as pycocotools does not declare it explicitly
     'cython',
     'contextlib2',
     'pillow',
     'lxml',
-    'pycocotools',
+    # replacement for pycocotools, as the published pypi package fails on cython and numpy dependencies
+    'git+https://github.com/junjuew/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI',
     'jupyter',
     'matplotlib'
 ]
@@ -41,7 +41,7 @@ setup_requires = [
 
 setuptools.setup(
     name='tf_object_detection',
-    version='0.0.2.4',
+    version='0.0.2.5',
     author='Junjue Wang',
     author_email='junjuew@cs.cmu.edu',
     description='A Thin Wrapper around Tensorflow Object Detection API for Easy Installation and Use',
