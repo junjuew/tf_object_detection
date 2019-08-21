@@ -36,7 +36,7 @@ install_requires = [
 
 setuptools.setup(
     name='tf_object_detection',
-    version='0.0.2.6',
+    version='0.0.2.7',
     author='Junjue Wang',
     author_email='junjuew@cs.cmu.edu',
     description='A Thin Wrapper around Tensorflow Object Detection API for Easy Installation and Use',
