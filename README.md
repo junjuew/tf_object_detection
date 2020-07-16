@@ -27,11 +27,13 @@ import object_detection
 ## What's in here
 
 * [setup.py](setup.py): The python packaging script.
-* [pb2](pb2): This directory contains the compiled protobuf files from the following commands.
+* `PROTOC` Environment variable should be set so that `setup.py` can compile as
+  part of the `setup.py` execution.
 
 ```bash
-cd tf_object_detection/research/
-protoc object_detection/protos/*.proto --python_out=.
-mv object_detection/protos/*_pb2.py ../../pb2/
+# Download and setup all required dependencies required for tensorflow object 
+# detection libarary to work correctly.
+$ python setup.py install
 ```
+
 * tf_object_detection: A git submodule pointing to the version of tensorflow object detection this thin wrapper is for.

@@ -1,21 +1,41 @@
 import glob
+import sys
 import os
 import shutil
-
+from distutils.spawn import find_executable
 import setuptools
+import subprocess
+from typing import List
 
 file_dir = os.path.dirname(os.path.realpath(__file__))
 
 
-def _copy_pb2_files():
-    """Copy compiled protobuf files into the python package for distribution."""
-    dest_dir = os.path.join(
-        file_dir, 'tf_object_detection/research/object_detection/protos/')
-    for filename in glob.glob(os.path.join(file_dir, 'pb2', '*.*')):
-        shutil.copy(filename, dest_dir)
+def runcmd(cmds: List[str]):
+    return subprocess.call(cmds, shell=True)
 
 
-_copy_pb2_files()
+# Find the Protocol Compiler.
+if 'PROTOC' in os.environ and os.path.exists(os.environ['PROTOC']):
+  protoc = os.environ['PROTOC']
+else:
+  protoc = find_executable("protoc")
+
+if not protoc:
+    error = "protoc command not found in PATH."\
+    " install the protoc command system wide or set the PROTOC env"\
+    " variable with protoc executable path."
+    print(error)
+    sys.exit(1)
+
+proto_commands = [
+    "cd ./tf_object_detection/research;" +
+    protoc +
+    " object_detection/protos/*.proto" +
+    " --python_out=."
+]
+# Pull the upstream object_detection code and package it.
+runcmd(['git', 'submodule', 'update', '--init'])
+runcmd(proto_commands)
 
 
 with open(os.path.join(file_dir, 'README.md')) as f:
@@ -36,7 +56,7 @@ install_requires = [
 
 setuptools.setup(
     name='tf_object_detection',
-    version='0.0.2.7',
+    version='0.0.3',
     author='Junjue Wang',
     author_email='junjuew@cs.cmu.edu',
     description='A Thin Wrapper around Tensorflow Object Detection API for Easy Installation and Use',
