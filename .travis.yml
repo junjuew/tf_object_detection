@@ -4,5 +4,9 @@ python:
   - 3.7
 install:
   - pip install setuptools>=41.0.0
+before_script:
+  - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protoc-3.7.1-linux-x86_64.zip
+  - unzip protoc-3.7.1-linux-x86_64.zip
+  - export PROTOC=$PWD/bin/protoc
 script: 
   - python setup.py install
