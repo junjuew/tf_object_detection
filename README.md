@@ -11,7 +11,15 @@ This is a thin wrapper around [Tensorflow Object Detection API](https://github.c
 ## Installation
 
 ```
-pip install tf-object-detection
+pip install tf-object-detection[tf]
+
+```
+
+Or for tensorflow with GPU support,
+
+```
+pip install tf-object-detection[tf-gpu]
+
 ```
 
 ## Usage
